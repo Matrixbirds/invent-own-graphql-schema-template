@@ -18,7 +18,8 @@ class Parser {
 
   parser() {
     for (let [symbol, value] of Object.entries(this._lexcials)) {
-      this._output = this._output.replace(value, this._properties[symbol]);
+      const reg = new RegExp(`\\${value}`, 'g');
+      this._output = this._output.replace(reg, this._properties[symbol]);
     }
     return this._output;
   }
